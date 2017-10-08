@@ -1,1 +1,8 @@
-hey!
+<%= @chore.name %>
+
+<form method="post" action="/chores/<%=@chore.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Chore">
+</form>
+
+<a href="/tweets/<%=@tweet.id%>/edit"> Edit Chore </a>

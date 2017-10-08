@@ -1,6 +1,5 @@
 class ChoresController < ApplicationController
 
-
 get '/chores' do
   if !logged_in?
     redirect '/login'
@@ -12,7 +11,7 @@ end
 
 get '/chores/new' do
   if logged_in?
-    erb :'chores/chores_tweet'
+    erb :'chores/create_chore'
   else
     redirect to '/login'
   end
@@ -21,11 +20,11 @@ end
 post '/chores' do
   redirect '/login' unless logged_in?
     if !params[:name].empty?
-      @chore = current_user.tweets.create(:name => params[:name])
+      @chore = current_user.chores.create(:name => params[:name])
       redirect "/chores/#{@chore.id}"
     else
       redirect '/chores/new'
-    end
+  end
 end
 
 get '/chores/:id' do
