@@ -4,7 +4,7 @@ get '/signup' do
   if session[:user_id]
     redirect to '/chores'
   else
-    erb :'roommate/create_roommate'
+    erb :'roommates/create_roommate'
   end
 end
 
