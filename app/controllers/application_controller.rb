@@ -22,7 +22,7 @@ class ApplicationController < Sinatra::Base
   helpers do
 
     def current_user
-      @current_user ||= Roommate.find(session[:user_id]) if session[:user_id].present?
+      @current_user ||= Roommate.find(session[:roommate_id]) if session[:roommate_id].present?
 
     end
 
