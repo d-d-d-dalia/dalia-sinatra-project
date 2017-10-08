@@ -1,1 +1,7 @@
-hey!!!
+<h2> Edit Chore </h2>
+
+<form method="post" action="/chores/<%=@chore.id%>">
+  <input id="hidden" type="hidden" name="_method" value="PATCH">
+  <input type="text" name="name" value="<%= @chore.name %>">
+  <input type="submit" value="submit">
+</form>
