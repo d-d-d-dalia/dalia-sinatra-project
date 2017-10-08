@@ -1,6 +1,6 @@
 class RoommatesController < ApplicationController
 
-  get '/signup' do
+get '/signup' do
   if session[:user_id]
     redirect to '/chores'
   else
