@@ -32,7 +32,7 @@ end
 post '/login' do
   user = Roommate.find_by(:name => params[:name])
   if user && user.authenticate(params[:password])
-    session[:user_id] = user.id
+    session[:roommate_id] = roommate.id
     redirect to '/chores'
   else
     redirect to '/signup'
