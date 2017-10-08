@@ -22,7 +22,7 @@ post '/signup' do
 end
 
 get '/login' do
-  if session[:user_id]
+  if session[:roommate_id]
     redirect to '/chores'
   else
     erb :'roommates/login'
