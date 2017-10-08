@@ -5,7 +5,7 @@ get '/chores' do
     redirect '/login'
   else
     @chores = Chore.all
-    erb :'chores/show'
+    erb :'chores/chores'
   end
 end
 
@@ -20,7 +20,7 @@ end
 post '/chores' do
   redirect '/login' unless logged_in?
     if !params[:name].empty?
-      @chore = current_user.chores.create(:name => params[:name])
+      @chore = current_user.chore.create(:name => params[:name])
       redirect "/chores/#{@chore.id}"
     else
       redirect '/chores/new'
