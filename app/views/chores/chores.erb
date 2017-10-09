@@ -7,7 +7,8 @@
   <%= roommate.name %>
   <h4> Chores: </h4>
   <% roommate.chores.each do |chore| %>
-  <%= chore.name %> -- <%= chore.date_completed %>
+  <%= chore.name %> -- <%= chore.date_completed %> <a href="chores/<%=chore.id%>/edit"> edit chore </a>
+  <br></br>
   <% end %>
 <% end %>
 
@@ -15,4 +16,3 @@
 <a href="/chores/new">Log a new chore (high five!)</a>
 
 <!-- how to safeguard against creating duplicate users and households. -->
-<!-- Edit chores link doesn't go to right place -->
