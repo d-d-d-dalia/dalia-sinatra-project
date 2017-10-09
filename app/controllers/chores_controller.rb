@@ -7,7 +7,7 @@ get '/chores' do
     redirect '/login'
   else
     # we will want to grab the current_user to grab it's household which contains all of the roomates
-    @roommates = Roommate.all
+    @roommates = current_user.household.roommates
     erb :'chores/chores'
   end
 end

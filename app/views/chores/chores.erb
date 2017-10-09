@@ -1,4 +1,7 @@
 <h1> Heyy, <%= current_user.name %> </h1>
-<% @chores.each do |chore| %>
+<% @roommates.each do |roommate| %>
+  <%= roommate.name %>
+  <% roommate.chores.each do |chore| %>
   <%= chore.name %>
+  <% end %>
 <% end %>
