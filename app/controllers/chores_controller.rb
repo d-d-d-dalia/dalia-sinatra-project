@@ -1,3 +1,5 @@
+require 'pry'
+
 class ChoresController < ApplicationController
 
 get '/chores' do
@@ -20,7 +22,7 @@ end
 post '/chores' do
   redirect '/login' unless logged_in?
     if !params[:name].empty?
-      @chore = current_user.chore.create(:name => params[:name])
+      @chore = current_user.chores.create(:name => params[:name])
       redirect "/chores/#{@chore.id}"
     else
       redirect '/chores/new'
@@ -30,7 +32,7 @@ end
 get '/chores/:id' do
   if logged_in?
     @chore = Chore.find_by(:id => params[:id])
-    erb :'chores/show_chore'
+    erb :'chores/show'
   else
     redirect '/login'
   end
@@ -40,7 +42,7 @@ get '/chores/:id/edit' do
   if logged_in?
     @chore = Chore.find_by_id(params[:id])
       if @chore.roommate_id == current_user.id
-        erb :'choress/edit_chore'
+        erb :'chores/edit_chore'
       else
         redirect to '/chores'
       end
@@ -50,6 +52,7 @@ get '/chores/:id/edit' do
 end
 
 patch '/chores/:id' do
+  binding.pry
   @chore = Chore.find_by_id(params[:id])
   if params[:name] != ""
     @chore.name = params[:name]

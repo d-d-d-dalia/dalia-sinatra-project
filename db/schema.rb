@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171008165500) do
+ActiveRecord::Schema.define(version: 20171009000918) do
 
   create_table "chores", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "roommate_id"
   end
 
   create_table "roommates", force: :cascade do |t|
