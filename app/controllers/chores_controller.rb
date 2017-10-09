@@ -24,7 +24,7 @@ post '/chores' do
   redirect '/login' unless logged_in?
     if !params[:name].empty?
       @chore = current_user.chores.create(:name => params[:name], :date_completed => Date.today)
-      redirect "/chores/#{@chore.id}"
+      redirect "/chores"
     else
       redirect '/chores/new'
   end
