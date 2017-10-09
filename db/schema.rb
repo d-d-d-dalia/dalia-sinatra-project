@@ -14,10 +14,9 @@
 ActiveRecord::Schema.define(version: 20171009171657) do
 
   create_table "chores", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "roommate_id"
+    t.string  "name"
+    t.date    "date_completed"
+    t.integer "roommate_id"
   end
 
   create_table "households", force: :cascade do |t|
