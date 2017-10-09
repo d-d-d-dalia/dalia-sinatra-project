@@ -7,6 +7,6 @@
   <%= roommate.name %>
   <h4> Chores: </h4>
   <% roommate.chores.each do |chore| %>
-  <%= chore.name %>
+  <%= chore.name %> -- <%= chore.date_completed %>
   <% end %>
 <% end %>
