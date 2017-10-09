@@ -52,7 +52,6 @@ get '/chores/:id/edit' do
 end
 
 patch '/chores/:id' do
-  binding.pry
   @chore = Chore.find_by_id(params[:id])
   if params[:name] != ""
     @chore.name = params[:name]

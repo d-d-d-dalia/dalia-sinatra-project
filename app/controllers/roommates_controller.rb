@@ -9,10 +9,13 @@ get '/signup' do
 end
 
 post '/signup' do
+  # also check if params[:household][:id] AND params[:household][:name] are both not blank
   if params[:name] == "" || params[:password] == ""
     redirect to '/signup'
   else
     @roommate = Roommate.new(:name => params[:name], :password => params[:password])
+    # conditionally set a roomate to a household (create houshold if params[:household][:name])
+    # conditionally set a roomate to a household (find by params[:household][:id] if selected)
     @roommate.save
 
     session[:roommate_id] = @roommate.id

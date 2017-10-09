@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009000918) do
+ActiveRecord::Schema.define(version: 20171009171657) do
 
   create_table "chores", force: :cascade do |t|
     t.string   "name"
@@ -20,9 +20,14 @@ ActiveRecord::Schema.define(version: 20171009000918) do
     t.integer  "roommate_id"
   end
 
-  create_table "roommates", force: :cascade do |t|
+  create_table "households", force: :cascade do |t|
     t.string "name"
-    t.string "password_digest"
+  end
+
+  create_table "roommates", force: :cascade do |t|
+    t.string  "name"
+    t.string  "password_digest"
+    t.integer "household_id"
   end
 
 end
