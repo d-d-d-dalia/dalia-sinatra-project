@@ -8,5 +8,12 @@
   <h4> Chores: </h4>
   <% roommate.chores.each do |chore| %>
   <%= chore.name %> -- <%= chore.date_completed %>
+  <br></br>
   <% end %>
 <% end %>
+
+
+<br></br>
+<a href="/chores/new">Log a new chore (high five!)</a>
+
+<!-- Should there be a delete users button? also, how to safeguard against creating duplicate users and households. -->
