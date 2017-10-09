@@ -1,6 +1,11 @@
 <h1> Heyy, <%= current_user.name %> </h1>
+<h2> Household Name: </h2>
+<%= current_user.household.name %>
+<h3> Roommates: </h3>
 <% @roommates.each do |roommate| %>
+  <h4> Name: </h4>
   <%= roommate.name %>
+  <h4> Chores: </h4>
   <% roommate.chores.each do |chore| %>
   <%= chore.name %>
   <% end %>
