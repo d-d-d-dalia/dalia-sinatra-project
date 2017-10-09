@@ -7,7 +7,7 @@
   <%= roommate.name %>
   <h4> Chores: </h4>
   <% roommate.chores.each do |chore| %>
-  <%= chore.name %> -- <%= chore.date_completed %> <a href="chores/<%=chore.id%>/edit"> edit chore </a>
+  <%= chore.name %> -- <%= chore.date_completed %> <a href="chores/<%=chore.id%>"> edit chore </a>
   <br></br>
   <% end %>
 <% end %>
