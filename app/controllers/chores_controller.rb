@@ -1,5 +1,6 @@
 require 'pry'
 
+
 class ChoresController < ApplicationController
 
 get '/chores' do
@@ -56,8 +57,10 @@ patch '/chores/:id' do
   @chore = Chore.find_by_id(params[:id])
   @chore.name = params[:name]
   if @chore.save
+    flash[:message] = "Chore successfully updated"
     redirect '/chores'
   end
+  flash[:message] = "Blank field not accepted"
   redirect to "/chores/#{params[:id]}/edit"
 end
 
@@ -68,7 +71,8 @@ delete '/chores/:id/delete' do
         @chore.delete
         redirect to '/chores'
       else
-  redirect to '/chores'
+        flash[:message] = "Not your chore to delete"
+        redirect to '/chores'
       end
   else
   redirect to '/login'

@@ -1,4 +1,5 @@
 require './config/environment'
+require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
 
@@ -8,6 +9,7 @@ class ApplicationController < Sinatra::Base
     use Rack::Session::Cookie,  :key => 'rack.session',
                                 :path => '/',
                                 :secret => 'your_secret'
+    use Rack::Flash
   end
 
   get "/" do
