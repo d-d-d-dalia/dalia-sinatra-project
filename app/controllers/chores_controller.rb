@@ -54,11 +54,11 @@ end
 
 patch '/chores/:id' do
   @chore = Chore.find_by_id(params[:id])
-  if params[:name] != ""
-    @chore.name = params[:name]
-    @chore.save
+  @chore.name = params[:name]
+  if @chore.save
+    redirect '/chores'
   end
-  redirect "chores/#{@chore.id}/edit"
+  redirect to "/chores/#{params[:id]}/edit"
 end
 
 delete '/chores/:id/delete' do
@@ -71,7 +71,7 @@ delete '/chores/:id/delete' do
   redirect to '/chores'
       end
   else
-    redirect to '/login'
+  redirect to '/login'
   end
 end
 
