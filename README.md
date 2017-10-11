@@ -15,11 +15,11 @@ Delete your chores
 
 Installation:
 
-$ git clone git@github.com:d-d-d-dalia/dalia-sinatra-project.git
-$ cd dalia-sinatra-project
-$ bundle install
-$ rake db:create && rake db:migrate
+git clone git@github.com:d-d-d-dalia/dalia-sinatra-project.git
+cd dalia-sinatra-project
+bundle install
+rake db:create && rake db:migrate
 
 Run the server
 
-$ shotgun
+shotgun
