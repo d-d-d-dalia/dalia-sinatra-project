@@ -1,6 +1,5 @@
 require 'pry'
 
-
 class ChoresController < ApplicationController
 
 get '/chores' do
