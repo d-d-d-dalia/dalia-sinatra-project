@@ -4,6 +4,7 @@
   <input type="password" name="password" placeholder="Password:">
   <select name="household[id]">
     <% Household.all.each do |household| %>
+    <!-- value is storing the id of the selection that was chosen from the options given in the drop down. important difference between the function of the tags 'input' vs 'select' -->
       <option value="<%= household.id %>"> <%= household.name %></option>
     <% end %>
   </select>

@@ -45,6 +45,7 @@ get '/chores/:id/edit' do
       if @chore.roommate_id == current_user.id
         erb :'chores/edit_chore'
       else
+        flash[:message] = "Not your chore to edit"
         redirect to '/chores'
       end
   else

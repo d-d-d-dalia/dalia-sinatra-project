@@ -1,7 +1,7 @@
 class RoommatesController < ApplicationController
 
 get '/signup' do
-  if session[:user_id]
+  if session[:roommate_id]
     redirect to '/chores'
   else
     erb :'roommates/create_roommate'
@@ -9,7 +9,7 @@ get '/signup' do
 end
 
 post '/signup' do
-  # also check if params[:household][:id] AND params[:household][:name] are both not blank
+  # also check if params[:household][:id] AND params[:household][:name] are both not blank (the && being because there is an option to either select or write in a new name)
   if params[:name] == "" || params[:password] == "" || (params[:household][:id] == "" && params[:household][:name] == "")
     redirect to '/signup'
   else

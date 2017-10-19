@@ -1,6 +1,6 @@
 <h1> Heyy, <%= current_user.name %> </h1>
-<h2> Household Name: </h2>
-<%= current_user.household.name %>
+<h2> Household Name:  <%= current_user.household.name %> </h2>
+
 <h3> Roommates: </h3>
 <% @roommates.each do |roommate| %>
   <h4> Name: </h4>
@@ -16,5 +16,3 @@
 <a href="/chores/new">Log a new chore (high five!)</a>
 <br></br>
 <a href="/logout">Logout</a>
-
-<!-- how to safeguard against creating duplicate users and households. -->

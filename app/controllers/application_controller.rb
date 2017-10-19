@@ -4,11 +4,13 @@ require 'rack-flash'
 class ApplicationController < Sinatra::Base
 
   configure do
-    set :public_folder, 'public'
+    # set :public_folder, 'public'
     set :views, 'app/views'
     use Rack::Session::Cookie,  :key => 'rack.session',
                                 :path => '/',
+                                # prevents tampering with session hash
                                 :secret => 'your_secret'
+                                
     use Rack::Flash
   end
 
@@ -19,10 +21,12 @@ class ApplicationController < Sinatra::Base
   helpers do
 
     def current_user
+      # @current_user = @current_user if already exists, otherwise @current_user = Roommate.find(session[:roommate_id]) if session[:roommate_id].present?
       @current_user ||= Roommate.find(session[:roommate_id]) if session[:roommate_id].present?
     end
 
     def logged_in?
+      # calls current_user. if @current_user is nil, returns false. if @current_user is not nil, returns true
       !!current_user
     end
 
