@@ -10,24 +10,27 @@ end
 
 post '/signup' do
   # also check if params[:household][:id] AND params[:household][:name] are both not blank (the && being because there is an option to either select or write in a new name)
-  if params[:name] == "" || params[:password] == "" || (params[:household][:id] == "" && params[:household][:name] == "")
+  if params[:name] == "" || params[:password] == "" || params[:email] == "" || (params[:household][:id] == "" && params[:household][:name] == "")
     redirect to '/signup'
   else
-    @roommate = Roommate.new(:name => params[:name], :password => params[:password])
-      if params[:household][:name] != ""
-        @household = Household.create(:name => params[:household][:name])
-      else
-        @household = Household.find(params[:household][:id])
-      end
+    @roommate = Roommate.new(:name => params[:name], :password => params[:password], :email => params[:email])
+    if params[:household][:name] != ""
+      @household = Household.create(:name => params[:household][:name])
+    else
+      @household = Household.find(params[:household][:id])
+    end
     @roommate.household = @household
-    @household.roommates << @roommate
-    # conditionally set a roomate to a household (create houshold if params[:household][:name])
+    if @roommate.save
+    #@household.roommates << @roommate
+    # conditionally set a roomate to a household (create household if params[:household][:name])
     # conditionally set a roomate to a household (find by params[:household][:id] if selected)
-    @roommate.save
-    @household.save
-    session[:roommate_id] = @roommate.id
+    #@household.save
+      session[:roommate_id] = @roommate.id
 
-    redirect to '/chores'
+      redirect to '/chores'
+    else 
+      redirect to '/signup'
+    end
   end
 end
 
@@ -40,7 +43,7 @@ get '/login' do
 end
 
 post '/login' do
-  user = Roommate.find_by(:name => params[:name])
+  user = Roommate.find_by(:email => params[:email])
   if user && user.authenticate(params[:password])
     session[:roommate_id] = user.id
     redirect to '/chores'

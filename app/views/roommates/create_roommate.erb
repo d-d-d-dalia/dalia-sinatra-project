@@ -1,6 +1,7 @@
 <h3>Sign Up</h3>
 <form action="/signup" method="POST">
   <input type="text" name="name" placeholder="Name:">
+  <input type="email" name="email" placeholder="Email:">
   <input type="password" name="password" placeholder="Password:">
   <select name="household[id]">
     <% Household.all.each do |household| %>
