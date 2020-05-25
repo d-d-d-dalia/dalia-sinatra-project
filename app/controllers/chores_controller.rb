@@ -8,6 +8,7 @@ get '/chores' do
   else
     # we will want to grab the current_user to grab it's household which contains all of the roomates
     @roommates = current_user.household.roommates
+    @chores = Chore.all
     erb :'chores/chores'
   end
 end
@@ -24,6 +25,7 @@ post '/chores' do
   redirect '/login' unless logged_in?
     if !params[:name].empty?
       @chore = current_user.chores.create(:name => params[:name], :date_completed => Date.today)
+      binding.pry
       redirect "/chores"
     else
       redirect '/chores/new'

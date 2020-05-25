@@ -1,0 +1,11 @@
+from old /chores view
+<h3> Roommates: </h3>
+  <% @roommates.each do |roommate| %>
+    <h4> Name: </h4>
+    <p> <%= roommate.name %> </p>
+
+    <h4> Chores: </h4>
+      <% roommate.chores.each do |chore| %>
+        <p> <%= chore.name %>  (<%= chore.date_completed %>) <a href="chores/<%=chore.id%>"> edit chore </a> </p>
+      <% end %>
+  <% end %>

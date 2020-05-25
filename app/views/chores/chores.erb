@@ -1,18 +1,15 @@
 <h1> Heyy, <%= current_user.name %> </h1>
-<h2> Household Name:  <%= current_user.household.name %> </h2>
 
-<h3> Roommates: </h3>
-<% @roommates.each do |roommate| %>
-  <h4> Name: </h4>
-  <%= roommate.name %>
-  <h4> Chores: </h4>
-  <% roommate.chores.each do |chore| %>
-  <%= chore.name %> -- <%= chore.date_completed %> <a href="chores/<%=chore.id%>"> edit chore </a>
-  <br></br>
+<h3>The chores y'all have done in: <%= current_user.household.name %> </h3>
+<br>
+  <% @chores.each do |chore| %>
+    <a href="/chores/<%=chore.id%>"> <p><%= chore.name %> </a> ~ <%= chore.roommate.name %> (<%= chore.date_completed %>) </p>
   <% end %>
-<% end %>
 
-<br></br>
-<a href="/chores/new">Log a new chore (high five!)</a>
-<br></br>
-<a href="/logout">Logout</a>
+<form method="get" action="/chores/new">
+  <input type="submit" value="Log a New Chore (high five!)">
+</form>
+<br><br><br>
+<form method="get" action="/logout">
+  <input type="submit" value="Logout">
+</form>

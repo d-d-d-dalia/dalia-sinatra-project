@@ -1,10 +1,28 @@
-<%= @chore.name %>
+<h3> <%= @chore.name %> ~ <%= @chore.roommate.name %> (completed: <%= @chore.date_completed %>)</h3>
+
+<br></br>
+
+<form method="get" action="/chores/<%=@chore.id%>/edit">
+  <input type="submit" value="Edit Chore">
+</form>
+
+<br>
 
 <form method="post" action="/chores/<%=@chore.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Chore">
 </form>
-<br></br>
-<a href="/chores/<%=@chore.id%>/edit"> Edit Chore </a>
-<br></br>
-<a href="/logout">Logout</a>
+
+<br>
+
+<form method="get" action="/chores">
+  <input type="submit" value="Back to All Chores">
+</form>
+
+<br>
+<br>
+<br>
+
+<form method="get" action="/logout">
+  <input type="submit" value="Logout">
+</form>
