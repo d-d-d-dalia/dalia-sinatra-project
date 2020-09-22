@@ -3,7 +3,8 @@
   <input type="text" name="name" placeholder="Name:">
   <input type="email" name="email" placeholder="Email:">
   <input type="password" name="password" placeholder="Password:">
-  <select name="household[id]">
+  <select name="household[id]" >
+    <option disabled selected value> -- where do you live? -- </option>
     <% Household.all.each do |household| %>
     <!-- value is storing the id of the selection that was chosen from the options given in the drop down. important difference between the function of the tags 'input' vs 'select' -->
       <option value="<%= household.id %>"> <%= household.name %></option>
