@@ -8,7 +8,14 @@ get '/chores' do
   else
     # we will want to grab the current_user to grab it's household which contains all of the roomates
     @roommates = current_user.household.roommates
-    @chores = current_user.chores
+    #binding.pry
+    @chores = []
+    current_user.household.roommates.each do |r|
+      r.chores.each do |c|
+        @chores << c
+      end
+    end
+    @chores
     erb :'chores/chores'
   end
 end

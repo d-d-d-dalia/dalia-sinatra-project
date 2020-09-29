@@ -26,7 +26,7 @@ class ApplicationController < Sinatra::Base
 
     def current_user
       # @current_user = @current_user if already exists, otherwise @current_user = Roommate.find(session[:roommate_id]) if session[:roommate_id].present?
-      @current_user ||= Roommate.find(session[:roommate_id]) if session[:roommate_id].present?
+      @current_user ||= Roommate.find(session[:roommate_id]) if session[:roommate_id]
     end
 
     def logged_in?
