@@ -30,9 +30,10 @@ class ApplicationController < Sinatra::Base
     end
 
     def logged_in?
-      # calls current_user. if @current_user is nil, returns false. if @current_user is not nil, returns true
+      # calls current_user. if @current_user nil, returns false. if @current_user is not nil, returns true
       !!current_user
     end
 
 	end
+
 end
